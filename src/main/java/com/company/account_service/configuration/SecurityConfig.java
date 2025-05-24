@@ -1,6 +1,5 @@
 package com.company.account_service.configuration;
 
-import com.company.account_service.enums.Role;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,7 +33,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(requests ->
                 requests.requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINT).permitAll()
-                        /*.requestMatchers(HttpMethod.GET, "/users").hasRole(Role.ADMIN.name())*/
+                        .requestMatchers(HttpMethod.GET, "/users").permitAll()
                         /*.hasAuthority("ROLE_ADMIN")*/
                         /*.requestMatchers(HttpMethod.POST, "/users", "/auth/introspect").permitAll()*/
                         .anyRequest().authenticated());
@@ -51,6 +50,7 @@ public class SecurityConfig {
         return httpSecurity.build();
     }
 
+    @Bean
     JwtAuthenticationConverter jwtConverter() {
         JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
         jwtGrantedAuthoritiesConverter.setAuthorityPrefix("ROLE_");
@@ -69,8 +69,6 @@ public class SecurityConfig {
                 .macAlgorithm(MacAlgorithm.HS512)
                 .build();
     }
-
-    ;
 
     @Bean
     PasswordEncoder passwordEncoder() {

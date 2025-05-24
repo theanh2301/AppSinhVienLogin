@@ -17,9 +17,9 @@ public enum ErrorCode {
     UNCATEGORIZED_EXCEPTION(9999, "Uncategorized exception", HttpStatus.INTERNAL_SERVER_ERROR),
     ;
 
-    private HttpStatusCode statusCode;
-    private int code;
-    private String message;
+    private final HttpStatusCode statusCode;
+    private final int code;
+    private final String message;
 
     ErrorCode(int code, String message, HttpStatusCode statusCode) {
         this.code = code;

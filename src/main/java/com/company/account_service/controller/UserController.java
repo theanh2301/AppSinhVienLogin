@@ -23,7 +23,6 @@ import java.util.List;
 public class UserController {
     UserService userService;
 
-
     @PostMapping
     ApiResponse<UserResponse> createUser(@RequestBody @Valid UserCreationRequest request) {
         ApiResponse<UserResponse> apiResponse = new ApiResponse<>();
@@ -51,13 +50,12 @@ public class UserController {
 
     }
 
-    /*@GetMapping("/{userId}")
+    @GetMapping("/{userId}")
     ApiResponse<UserResponse> getUserById(@PathVariable("userId") String userId) {
         return ApiResponse.<UserResponse>builder()
                 .result(userService.getUserById(userId))
                 .build();
-    }*/
-
+    }
 
     @PutMapping("/{userId}")
     ApiResponse<UserResponse> updateUser(@PathVariable("userId") String userId, @RequestBody @Valid UserUpdateRequest request) {

@@ -1,6 +1,5 @@
 package com.company.account_service.dto.response;
 
-import com.company.account_service.entity.Role;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -12,13 +11,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @FieldDefaults (level = AccessLevel.PRIVATE)
-public class UserResponse {
-    String id;
-    String username;
-    String firstName;
-    String lastName;
-    String email;
-    Integer phone;
-    LocalDate birthDate;
-    Set<Role> role;
+public class PermissionResponse {
+    String name;
+    String description;
 }

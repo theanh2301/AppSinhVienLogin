@@ -21,7 +21,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -45,7 +44,7 @@ public class UserService {
         HashSet<String> role = new HashSet<>();
         role.add(Role.USER.name());
 
-        user.setRole(role);
+        //user.setRole(role);
 
         return userMapper.toUserResponse(userRepository.save(user));
     }
